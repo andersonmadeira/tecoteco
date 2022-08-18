@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/groundDirt.png" type="Texture" id=3]
+[ext_resource path="res://Terrain.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5, 137 )
+
+[node name="Terrain" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="SpawnPoint" type="Area2D" parent="."]
+position = Vector2( 761, 166 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnPoint"]
+position = Vector2( 0, 14 )
+shape = SubResource( 1 )
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2( 0, 54 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite1" type="Sprite" parent="Ceiling"]
+position = Vector2( 0, -54 )
+texture = ExtResource( 3 )
+centered = false
+flip_h = true
+flip_v = true
+
+[node name="Sprite2" type="Sprite" parent="Ceiling"]
+position = Vector2( 808, -54 )
+texture = ExtResource( 3 )
+centered = false
+flip_h = true
+flip_v = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ceiling"]
+rotation = -0.000168064
+polygon = PoolVector2Array( 0.00352935, -21, 45.0017, -9.99244, 63.9975, 15.0108, 148.998, 12.025, 171.001, -7.97126, 208.002, -10.965, 235.007, -39.9605, 273.007, -39.9541, 300.005, -27.9496, 338.005, -28.9432, 371.999, 3.06252, 432.999, 3.07277, 458.002, -10.923, 500.002, -11.916, 559.998, 11.0941, 649.999, 8.10924, 673.003, -17.8869, 717.005, -28.8795, 767.004, -25.8711, 775.003, -17.8698, 807.003, -19.8644, 853.002, -9.85664, 871.997, 15.1466, 956.998, 12.1608, 978.001, -7.83563, 1017, -11.8291, 1042.01, -38.8249, 1081.01, -38.8183, 1107, -28.814, 1146, -28.8074, 1180, 3.19831, 1242, 3.20874, 1265, -10.7874, 1308, -11.7802, 1368, 11.2299, 1458, 8.24504, 1480, -16.7513, 1525.01, -29.7437, 1575, -25.7353, 1583, -17.734, 1616, -19.7284, 1616.01, -53.7284, 0.00907546, -54 )
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2( 0, 360 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite1" type="Sprite" parent="Ground"]
+position = Vector2( 0, -71 )
+texture = ExtResource( 3 )
+centered = false
+flip_h = true
+
+[node name="Sprite2" type="Sprite" parent="Ground"]
+position = Vector2( 808, -71 )
+texture = ExtResource( 3 )
+centered = false
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
+position = Vector2( 8, -40 )
+polygon = PoolVector2Array( -8, 7, 37, -2, 56, -27, 142, -24, 163, -3.00003, 202, -1.00003, 228, 27, 266, 27.9999, 293, 15.9999, 331, 16.9999, 364, -14.0001, 426, -15.0001, 450, -9.15527e-05, 492, -9.15527e-05, 552, -23.0001, 643, -20.0001, 666, 5.99988, 711, 17.9999, 760, 14.9999, 767, 5.99988, 800, 7.99985, 846, -2, 865, -29, 949, -26, 971, -5, 1009, -2, 1036, 26, 1075, 26, 1099, 15, 1139, 15, 1172, -17, 1234, -17, 1258, -2, 1301, -2, 1360, -25, 1450, -22, 1472, 4, 1519, 16, 1568, 12, 1576, 4, 1608, 7, 1608, 40, 800, 41.9998, -8, 40 )
+
+[connection signal="body_entered" from="SpawnPoint" to="." method="_on_SpawnPoint_body_entered"]
