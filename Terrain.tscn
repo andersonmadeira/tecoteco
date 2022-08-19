@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 137 )
 
-[node name="Terrain" type="Node2D"]
+[node name="Terrain" type="Node2D" groups=["Terrain"]]
 script = ExtResource( 5 )
 
 [node name="SpawnPoint" type="Area2D" parent="."]
@@ -20,9 +20,10 @@ __meta__ = {
 position = Vector2( 0, 14 )
 shape = SubResource( 1 )
 
-[node name="Ceiling" type="StaticBody2D" parent="."]
+[node name="Ceiling" type="StaticBody2D" parent="." groups=["Obstacles"]]
 position = Vector2( 0, 54 )
 z_index = 1
+collision_layer = 2
 __meta__ = {
 "_edit_group_": true
 }
@@ -46,9 +47,10 @@ visible = false
 rotation = -0.000168064
 polygon = PoolVector2Array( 0.00352935, -21, 45.0017, -9.99244, 63.9975, 15.0108, 148.998, 12.025, 171.001, -7.97126, 208.002, -10.965, 235.007, -39.9605, 273.007, -39.9541, 300.005, -27.9496, 338.005, -28.9432, 371.999, 3.06252, 432.999, 3.07277, 458.002, -10.923, 500.002, -11.916, 559.998, 11.0941, 649.999, 8.10924, 673.003, -17.8869, 717.005, -28.8795, 767.004, -25.8711, 775.003, -17.8698, 807.003, -19.8644, 853.002, -9.85664, 871.997, 15.1466, 956.998, 12.1608, 978.001, -7.83563, 1017, -11.8291, 1042.01, -38.8249, 1081.01, -38.8183, 1107, -28.814, 1146, -28.8074, 1180, 3.19831, 1242, 3.20874, 1265, -10.7874, 1308, -11.7802, 1368, 11.2299, 1458, 8.24504, 1480, -16.7513, 1525.01, -29.7437, 1575, -25.7353, 1583, -17.734, 1616, -19.7284, 1616.01, -53.7284, 0.00907546, -54 )
 
-[node name="Ground" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="." groups=["Obstacles"]]
 position = Vector2( 0, 360 )
 z_index = 1
+collision_layer = 4
 __meta__ = {
 "_edit_group_": true
 }

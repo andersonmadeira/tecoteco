@@ -17,8 +17,9 @@ animations = [ {
 radius = 31.0
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 113, 66 )
+position = Vector2( 385, 172 )
 scale = Vector2( 0.75, 0.75 )
+collision_mask = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -26,9 +27,8 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
-frame = 1
+frame = 2
 speed_scale = 8.0
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 4, -2 )
