@@ -8,18 +8,21 @@ const MAX_FALL_SPEED = 200
 const GRAVITY = 10
 
 var velocity = Vector2()
-var playing = true
+var is_playing = true
 
-func _ready():
-	resume()
-	pass
+#func _ready():
+#	resume()
+#	pass
 
 func _physics_process(delta):
+	if not is_playing:
+		return
+		
 	velocity.y += GRAVITY
 	if velocity.y > MAX_FALL_SPEED:
 		velocity.y = MAX_FALL_SPEED
 	
-	if playing and Input.is_action_just_pressed("flap"):
+	if Input.is_action_just_pressed("flap"):
 		velocity.y -= FLAP
 	
 	var collision = move_and_collide(velocity * delta)
@@ -28,14 +31,9 @@ func _physics_process(delta):
 		emit_signal("crashed")
 		stop()
 		
-		
 func stop():
-	playing = false
+	is_playing = false
 	$AnimatedSprite.playing = false
-	
-func resume():
-	playing = true
-	$AnimatedSprite.playing = true
 		
 #	velocity = move_and_slide(velocity, Vector2.UP)
 #

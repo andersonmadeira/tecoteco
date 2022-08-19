@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/background.png" type="Texture" id=2]
 [ext_resource path="res://Terrain.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ButtonTheme.tres" type="Theme" id=5]
+[ext_resource path="res://assets/UI/textGameOver.png" type="Texture" id=6]
+[ext_resource path="res://ButtonNormalStyle.tres" type="StyleBox" id=7]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -20,5 +23,25 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="Terrain" parent="." instance=ExtResource( 3 )]
 
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="RestartButton" type="Button" parent="HUD"]
+visible = false
+margin_left = 344.0
+margin_top = 202.0
+margin_right = 456.0
+margin_bottom = 231.0
+theme = ExtResource( 5 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+text = "Restart"
+
+[node name="GameOverText" type="Sprite" parent="HUD"]
+visible = false
+position = Vector2( 400, 154 )
+texture = ExtResource( 6 )
+
 [connection signal="crashed" from="Player" to="." method="_on_Player_crashed"]
 [connection signal="spawn_point_reached" from="Terrain" to="." method="_on_Terrain_spawn_point_reached"]
+[connection signal="pressed" from="HUD/RestartButton" to="." method="_on_RestartButton_pressed"]

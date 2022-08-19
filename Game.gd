@@ -25,14 +25,26 @@ func spawn_terrain():
 	
 func stop():
 	is_playing = false
-	$Player.stop()
 	get_tree().call_group("Terrain", "stop")
 	
-func resume():
-	is_playing = true
-	$Player.resume()
-	get_tree().call_group("Terrain", "resume")
+#func resume():
+#	is_playing = true
+#	get_tree().call_group("Terrain", "resume")
+#
+func restart():
+	$HUD/RestartButton.hide()
+	$HUD/GameOverText.hide()
+	get_tree().reload_current_scene()
 
 
 func _on_Player_crashed():
 	stop()
+	display_game_over()
+	
+
+func _on_RestartButton_pressed():
+	restart()
+
+func display_game_over():
+	$HUD/RestartButton.show()
+	$HUD/GameOverText.show()
