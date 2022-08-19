@@ -4,7 +4,6 @@ export(PackedScene) var terrain_scene
 export(int) var terrain_width
 
 var last_terrain
-
 var is_playing = true
 
 func _ready():
@@ -16,31 +15,28 @@ func _on_Terrain_spawn_point_reached():
 
 func spawn_terrain():
 	print("Spawning new terrain!")
-	var terrain_location = last_terrain.position + Vector2(terrain_width, 0)
+	var terrain_location = Vector2(last_terrain.position.x + terrain_width, 0)
+	print("Spawned at")
+	print(terrain_location)
 	var next_terrain = terrain_scene.instance()
 	next_terrain.position = terrain_location
 	next_terrain.connect("spawn_point_reached", self, "_on_Terrain_spawn_point_reached")
-	add_child(next_terrain, true)
+	add_child(next_terrain)
+	next_terrain.resume()
 	last_terrain = next_terrain
 	
 func stop():
 	is_playing = false
 	get_tree().call_group("Terrain", "stop")
 	
-#func resume():
-#	is_playing = true
-#	get_tree().call_group("Terrain", "resume")
-#
 func restart():
 	$HUD/RestartButton.hide()
 	$HUD/GameOverText.hide()
 	get_tree().reload_current_scene()
 
-
 func _on_Player_crashed():
 	stop()
 	display_game_over()
-	
 
 func _on_RestartButton_pressed():
 	restart()
@@ -48,3 +44,10 @@ func _on_RestartButton_pressed():
 func display_game_over():
 	$HUD/RestartButton.show()
 	$HUD/GameOverText.show()
+
+func _on_Player_start_game():
+	$HUD/TapLeft.hide()
+	$HUD/TapRight.hide()
+	$HUD/TapAnimatedSprite.hide()
+	$Player.resume()
+	$Terrain.resume()

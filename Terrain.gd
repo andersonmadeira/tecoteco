@@ -2,7 +2,7 @@ extends Node2D
 
 signal spawn_point_reached
 
-var is_playing = true
+var is_playing = false
 
 func _physics_process(delta):
 	if not is_playing:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/background.png" type="Texture" id=2]
@@ -7,6 +7,18 @@
 [ext_resource path="res://ButtonTheme.tres" type="Theme" id=5]
 [ext_resource path="res://assets/UI/textGameOver.png" type="Texture" id=6]
 [ext_resource path="res://ButtonNormalStyle.tres" type="StyleBox" id=7]
+[ext_resource path="res://assets/UI/tapLeft.png" type="Texture" id=8]
+[ext_resource path="res://assets/UI/tapRight.png" type="Texture" id=9]
+[ext_resource path="res://assets/UI/tapTick.png" type="Texture" id=10]
+[ext_resource path="res://assets/UI/tap.png" type="Texture" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -18,7 +30,7 @@ position = Vector2( 384, 155 )
 texture = ExtResource( 2 )
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 4 )]
-position = Vector2( 88, 136 )
+position = Vector2( 146, 166 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Terrain" parent="." instance=ExtResource( 3 )]
@@ -42,6 +54,25 @@ visible = false
 position = Vector2( 400, 154 )
 texture = ExtResource( 6 )
 
+[node name="TapLeft" type="Sprite" parent="HUD"]
+position = Vector2( 200, 160 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="TapRight" type="Sprite" parent="HUD"]
+position = Vector2( 92, 160 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="TapAnimatedSprite" type="AnimatedSprite" parent="HUD"]
+position = Vector2( 176, 206 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 1 )
+frame = 1
+speed_scale = 0.5
+playing = true
+
 [connection signal="crashed" from="Player" to="." method="_on_Player_crashed"]
+[connection signal="start_game" from="Player" to="." method="_on_Player_start_game"]
 [connection signal="spawn_point_reached" from="Terrain" to="." method="_on_Terrain_spawn_point_reached"]
 [connection signal="pressed" from="HUD/RestartButton" to="." method="_on_RestartButton_pressed"]
