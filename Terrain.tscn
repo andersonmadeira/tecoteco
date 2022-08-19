@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/groundDirt.png" type="Texture" id=3]
+[ext_resource path="res://assets/groundDirt.png" type="Texture" id=1]
+[ext_resource path="res://assets/rock.png" type="Texture" id=3]
 [ext_resource path="res://Terrain.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -21,20 +22,21 @@ shape = SubResource( 1 )
 
 [node name="Ceiling" type="StaticBody2D" parent="."]
 position = Vector2( 0, 54 )
+z_index = 1
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite1" type="Sprite" parent="Ceiling"]
 position = Vector2( 0, -54 )
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 centered = false
 flip_h = true
 flip_v = true
 
 [node name="Sprite2" type="Sprite" parent="Ceiling"]
 position = Vector2( 808, -54 )
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 centered = false
 flip_h = true
 flip_v = true
@@ -45,24 +47,580 @@ polygon = PoolVector2Array( 0.00352935, -21, 45.0017, -9.99244, 63.9975, 15.0108
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2( 0, 360 )
+z_index = 1
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite1" type="Sprite" parent="Ground"]
 position = Vector2( 0, -71 )
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 centered = false
 flip_h = true
 
 [node name="Sprite2" type="Sprite" parent="Ground"]
 position = Vector2( 808, -71 )
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 centered = false
 flip_h = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
 position = Vector2( 8, -40 )
 polygon = PoolVector2Array( -8, 7, 37, -2, 56, -27, 142, -24, 163, -3.00003, 202, -1.00003, 228, 27, 266, 27.9999, 293, 15.9999, 331, 16.9999, 364, -14.0001, 426, -15.0001, 450, -9.15527e-05, 492, -9.15527e-05, 552, -23.0001, 643, -20.0001, 666, 5.99988, 711, 17.9999, 760, 14.9999, 767, 5.99988, 800, 7.99985, 846, -2, 865, -29, 949, -26, 971, -5, 1009, -2, 1036, 26, 1075, 26, 1099, 15, 1139, 15, 1172, -17, 1234, -17, 1258, -2, 1301, -2, 1360, -25, 1450, -22, 1472, 4, 1519, 16, 1568, 12, 1576, 4, 1608, 7, 1608, 40, 800, 41.9998, -8, 40 )
+
+[node name="Rock" type="StaticBody2D" parent="."]
+position = Vector2( 192, 60 )
+rotation = 3.14159
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock2" type="StaticBody2D" parent="."]
+position = Vector2( 300, 76 )
+rotation = 3.14159
+scale = Vector2( 1.25, 1.25 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock2"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock2"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock3" type="StaticBody2D" parent="."]
+position = Vector2( 149, 287 )
+rotation = 6.28318
+scale = Vector2( 1.25, 1.25 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock3"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock3"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock4" type="StaticBody2D" parent="."]
+position = Vector2( 269, 312 )
+rotation = 6.28318
+scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock4"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock4"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock5" type="StaticBody2D" parent="."]
+position = Vector2( 412, 289 )
+rotation = 6.28318
+scale = Vector2( 1.2, 1.2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock5"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock5"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock7" type="StaticBody2D" parent="."]
+position = Vector2( 661, 72 )
+rotation = 3.14159
+scale = Vector2( 1.2, 1.2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock7"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock7"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock12" type="StaticBody2D" parent="."]
+position = Vector2( 635, 296 )
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock12"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock12"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock14" type="StaticBody2D" parent="."]
+position = Vector2( 727, 53 )
+rotation = -3.14159
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock14"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock14"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock13" type="StaticBody2D" parent="."]
+position = Vector2( 692, 312 )
+scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock13"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock13"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock8" type="StaticBody2D" parent="."]
+position = Vector2( 561, 289 )
+scale = Vector2( 1.2, 1.2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock8"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock8"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock9" type="StaticBody2D" parent="."]
+position = Vector2( 466, 65 )
+rotation = 3.14159
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock9"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock9"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock10" type="StaticBody2D" parent="."]
+position = Vector2( 529, 74 )
+rotation = 3.14159
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock10"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock10"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock11" type="StaticBody2D" parent="."]
+position = Vector2( 491, 296 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock11"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock11"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock15" type="StaticBody2D" parent="."]
+position = Vector2( 103, 294 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock15"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock15"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock16" type="StaticBody2D" parent="."]
+position = Vector2( 29, 316 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock16"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock16"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock17" type="StaticBody2D" parent="."]
+position = Vector2( 25, 54 )
+rotation = -3.14159
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock17"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock17"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock18" type="StaticBody2D" parent="."]
+position = Vector2( 96, 69 )
+rotation = -3.14159
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock18"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock18"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock6" type="StaticBody2D" parent="."]
+position = Vector2( 405, 51 )
+rotation = 9.42476
+scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock6"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock6"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock19" type="StaticBody2D" parent="."]
+position = Vector2( 1004, 60 )
+rotation = 3.14159
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock19"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock19"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock20" type="StaticBody2D" parent="."]
+position = Vector2( 1112, 76 )
+rotation = 3.14159
+scale = Vector2( 1.25, 1.25 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock20"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock20"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock21" type="StaticBody2D" parent="."]
+position = Vector2( 961, 287 )
+rotation = 6.28318
+scale = Vector2( 1.25, 1.25 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock21"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock21"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock22" type="StaticBody2D" parent="."]
+position = Vector2( 1081, 312 )
+rotation = 6.28318
+scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock22"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock22"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock23" type="StaticBody2D" parent="."]
+position = Vector2( 1224, 289 )
+rotation = 6.28318
+scale = Vector2( 1.2, 1.2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock23"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock23"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock24" type="StaticBody2D" parent="."]
+position = Vector2( 1473, 72 )
+rotation = 3.14159
+scale = Vector2( 1.2, 1.2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock24"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock24"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock25" type="StaticBody2D" parent="."]
+position = Vector2( 1447, 296 )
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock25"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock25"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock37" type="StaticBody2D" parent="."]
+position = Vector2( 1572, 326 )
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock37"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock37"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock38" type="StaticBody2D" parent="."]
+position = Vector2( 1586, 36 )
+rotation = -3.14159
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock38"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock38"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock26" type="StaticBody2D" parent="."]
+position = Vector2( 1539, 53 )
+rotation = -3.14159
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock26"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock26"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock27" type="StaticBody2D" parent="."]
+position = Vector2( 1504, 312 )
+scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock27"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock27"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock28" type="StaticBody2D" parent="."]
+position = Vector2( 1373, 289 )
+scale = Vector2( 1.2, 1.2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock28"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock28"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock29" type="StaticBody2D" parent="."]
+position = Vector2( 1278, 65 )
+rotation = 3.14159
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock29"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock29"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock30" type="StaticBody2D" parent="."]
+position = Vector2( 1341, 74 )
+rotation = 3.14159
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock30"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock30"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock31" type="StaticBody2D" parent="."]
+position = Vector2( 1303, 296 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock31"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock31"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock32" type="StaticBody2D" parent="."]
+position = Vector2( 915, 294 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock32"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock32"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock33" type="StaticBody2D" parent="."]
+position = Vector2( 841, 316 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock33"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock33"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock34" type="StaticBody2D" parent="."]
+position = Vector2( 837, 54 )
+rotation = -3.14159
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock34"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock34"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock35" type="StaticBody2D" parent="."]
+position = Vector2( 908, 69 )
+rotation = -3.14159
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock35"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock35"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
+
+[node name="Rock36" type="StaticBody2D" parent="."]
+position = Vector2( 1217, 51 )
+rotation = 9.42476
+scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Rock36"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock36"]
+polygon = PoolVector2Array( 4, -59, -26, 59, 26, 59, 8, -59 )
 
 [connection signal="body_entered" from="SpawnPoint" to="." method="_on_SpawnPoint_body_entered"]
