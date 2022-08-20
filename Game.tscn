@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/background.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/UI/tapTick.png" type="Texture" id=10]
 [ext_resource path="res://assets/UI/tap.png" type="Texture" id=11]
 [ext_resource path="res://assets/Font/kenvector_future.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://assets/Sounds/game_over.wav" type="AudioStream" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -73,7 +74,6 @@ texture = ExtResource( 9 )
 position = Vector2( 176, 206 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-frame = 1
 speed_scale = 0.5
 playing = true
 
@@ -84,6 +84,9 @@ margin_right = 441.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 2 )
 text = "0"
+
+[node name="SoundGameOver" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
 
 [connection signal="collected_star" from="Player" to="." method="_on_Player_collected_star"]
 [connection signal="crashed" from="Player" to="." method="_on_Player_crashed"]

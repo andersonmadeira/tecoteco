@@ -43,6 +43,7 @@ func _on_RestartButton_pressed():
 	restart()
 
 func display_game_over():
+	$SoundGameOver.play()
 	$HUD/RestartButton.show()
 	$HUD/GameOverText.show()
 

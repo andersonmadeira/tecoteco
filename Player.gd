@@ -26,11 +26,13 @@ func _physics_process(delta):
 		velocity.y = MAX_FALL_SPEED
 	
 	if Input.is_action_just_pressed("flap"):
+		$SoundJump.play()
 		velocity.y -= FLAP
 	
 	var collision = move_and_collide(velocity * delta)
 	
 	if collision:
+		$SoundHit.play()
 		crashed = true
 		emit_signal("crashed")
 		stop()
@@ -45,5 +47,6 @@ func resume():
 	$AnimatedSprite.playing = true
 
 func collect_star():
+	$SoundCoin.play()
 	emit_signal("collected_star")
 		
