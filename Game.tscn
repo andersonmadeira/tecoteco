@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/background.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/UI/tapRight.png" type="Texture" id=9]
 [ext_resource path="res://assets/UI/tapTick.png" type="Texture" id=10]
 [ext_resource path="res://assets/UI/tap.png" type="Texture" id=11]
+[ext_resource path="res://assets/Font/kenvector_future.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -19,6 +20,10 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 12 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -71,6 +76,14 @@ frames = SubResource( 1 )
 frame = 1
 speed_scale = 0.5
 playing = true
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+margin_left = 397.0
+margin_top = 8.0
+margin_right = 441.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 2 )
+text = "0"
 
 [connection signal="collected_star" from="Player" to="." method="_on_Player_collected_star"]
 [connection signal="crashed" from="Player" to="." method="_on_Player_crashed"]

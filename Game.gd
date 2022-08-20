@@ -55,4 +55,4 @@ func _on_Player_start_game():
 
 func _on_Player_collected_star():
 	score += 1
-	print("Score: ", score)
+	$HUD/ScoreLabel.text = str(score)
