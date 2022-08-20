@@ -5,6 +5,7 @@ export(int) var terrain_width
 
 var last_terrain
 var is_playing = true
+var score = 0
 
 func _ready():
 	last_terrain = get_node("Terrain")
@@ -51,3 +52,7 @@ func _on_Player_start_game():
 	$HUD/TapAnimatedSprite.hide()
 	$Player.resume()
 	$Terrain.resume()
+
+func _on_Player_collected_star():
+	score += 1
+	print("Score: ", score)

@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal crashed
 signal start_game
+signal collected_star
 
 const UP = Vector2(0, -1)
 const FLAP = 400
@@ -42,4 +43,7 @@ func resume():
 	crashed = false
 	is_playing = true
 	$AnimatedSprite.playing = true
+
+func collect_star():
+	emit_signal("collected_star")
 		
