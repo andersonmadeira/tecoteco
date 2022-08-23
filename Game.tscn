@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/background.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ButtonTheme.tres" type="Theme" id=5]
 [ext_resource path="res://assets/UI/textGameOver.png" type="Texture" id=6]
+[ext_resource path="res://assets/Sounds/background_music.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/UI/tapLeft.png" type="Texture" id=8]
 [ext_resource path="res://assets/UI/tapRight.png" type="Texture" id=9]
 [ext_resource path="res://assets/UI/tapTick.png" type="Texture" id=10]
@@ -66,9 +67,9 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="RestartButton" type="Button" parent="HUD"]
 visible = false
-margin_left = 344.0
+margin_left = 324.0
 margin_top = 202.0
-margin_right = 456.0
+margin_right = 436.0
 margin_bottom = 231.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0.454902, 0.345098, 0.227451, 1 )
@@ -79,8 +80,9 @@ text = "Restart"
 
 [node name="GameOverText" type="Sprite" parent="HUD"]
 visible = false
-position = Vector2( 400, 154 )
+position = Vector2( 174, 111.93 )
 texture = ExtResource( 6 )
+centered = false
 
 [node name="TapLeft" type="Sprite" parent="HUD"]
 position = Vector2( 200, 160 )
@@ -100,9 +102,9 @@ speed_scale = 0.5
 playing = true
 
 [node name="ScoreControl" type="Panel" parent="HUD"]
-margin_left = 288.0
+margin_left = 278.0
 margin_top = 4.0
-margin_right = 491.0
+margin_right = 481.0
 margin_bottom = 43.0
 custom_styles/panel = SubResource( 7 )
 __meta__ = {
@@ -120,16 +122,16 @@ align = 1
 valign = 1
 
 [node name="HighscoreControl" type="Panel" parent="HUD"]
-margin_left = 317.0
+margin_left = 290.0
 margin_top = 326.0
-margin_right = 468.0
+margin_right = 470.0
 margin_bottom = 355.0
 custom_styles/panel = SubResource( 7 )
 
 [node name="HighscoreLabel" type="Label" parent="HUD/HighscoreControl"]
 margin_left = 3.0
 margin_top = 2.0
-margin_right = 148.0
+margin_right = 177.0
 margin_bottom = 27.0
 custom_fonts/font = SubResource( 2 )
 text = "Record: 0"
@@ -141,6 +143,10 @@ stream = ExtResource( 13 )
 
 [node name="SoundCoin" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource( 3 )
+
+[node name="SoundBackground" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
 
 [connection signal="collected_star" from="Player" to="." method="_on_Player_collected_star"]
 [connection signal="crashed" from="Player" to="." method="_on_Player_crashed"]

@@ -53,6 +53,7 @@ func _on_RestartButton_pressed():
 func display_game_over():
 	$HUD/RestartButton.show()
 	$HUD/GameOverText.show()
+	$SoundBackground.stop()
 	yield(get_tree().create_timer(0.5), "timeout")
 	$SoundGameOver.play()
 
@@ -62,6 +63,7 @@ func _on_Player_start_game():
 	$HUD/TapAnimatedSprite.hide()
 	$Player.resume()
 	$Terrain.resume()
+	$SoundBackground.play()
 
 func _on_Player_collected_star():
 	score += 1
