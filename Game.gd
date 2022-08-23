@@ -6,10 +6,13 @@ export(int) var terrain_width
 var last_terrain
 var is_playing = true
 var score = 0
+var highscore = 0
 
 func _ready():
 	last_terrain = get_node("Terrain")
 	last_terrain.connect("spawn_point_reached", self, "_on_Terrain_spawn_point_reached")
+	highscore = load_highscore()
+	$HUD/HighscoreControl/HighscoreLabel.text = "Highscore: " + str(highscore)
 
 func _on_Terrain_spawn_point_reached():
 	spawn_terrain()
@@ -38,14 +41,20 @@ func restart():
 func _on_Player_crashed():
 	stop()
 	display_game_over()
+	
+	if score > highscore:
+		highscore = score
+		$HUD/HighscoreControl/HighscoreLabel.text = "Highscore: " + str(highscore)
+		save_highscore(score)
 
 func _on_RestartButton_pressed():
 	restart()
 
 func display_game_over():
-	$SoundGameOver.play()
 	$HUD/RestartButton.show()
 	$HUD/GameOverText.show()
+	yield(get_tree().create_timer(0.5), "timeout")
+	$SoundGameOver.play()
 
 func _on_Player_start_game():
 	$HUD/TapLeft.hide()
@@ -56,4 +65,22 @@ func _on_Player_start_game():
 
 func _on_Player_collected_star():
 	score += 1
-	$HUD/ScoreLabel.text = str(score)
+	$HUD/ScoreControl/ScoreLabel.text = "Score: " + str(score)
+	
+func save_highscore(score: int):
+	var file = File.new()
+	file.open_encrypted_with_pass("user://game.save", File.WRITE, "strongpass")
+	file.store_line(to_json({ "highscore": score }))
+	file.close()
+
+func load_highscore() -> int:
+	var file = File.new()
+	
+	if not file.file_exists("user://game.save"):
+		return 0
+		
+	file.open_encrypted_with_pass("user://game.save", File.READ, "strongpass")
+	
+	var data = parse_json(file.get_line())
+	return data["highscore"]
+	
