@@ -67,7 +67,7 @@ func _on_Player_start_game():
 
 func _on_Player_collected_star():
 	score += 1
-	$HUD/ScoreControl/ScoreLabel.text = "Score: " + str(score)
+	$HUD/ScoreControl/ScoreLabel.text = "Score: " + str(score * -1)
 	
 func save_highscore(score: int):
 	var file = File.new()
